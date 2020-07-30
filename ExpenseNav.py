@@ -1,8 +1,8 @@
 import sqlite3
 
-expense_nav = ['1 - Debts', '2 - Entertainment', '3 - Food','4 - Healthcare', '5 - Home Improvement', '6 - Rent or Mortgage', '7 - Saving and Investing', '8 - Transportation', '9 - Utilities']
-income_nav = ['1 - Salary', '2 - Other Income', '3 - Refunds', '4 - Balance Adjustment']
-expenses2 = ['Debts', 'Entertainment']
+# expense_nav = ['1 - Debts', '2 - Entertainment', '3 - Food','4 - Healthcare', '5 - Home Improvement', '6 - Rent or Mortgage', '7 - Saving and Investing', '8 - Transportation', '9 - Utilities']
+# income_nav = ['1 - Salary', '2 - Other Income', '3 - Refunds', '4 - Balance Adjustment']
+# expenses2 = ['Debts', 'Entertainment']
 expense_selection = ''
 
 def ExpenseNav():

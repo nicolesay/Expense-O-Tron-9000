@@ -47,7 +47,7 @@ class Categories:
 			try:
 				userselect = int(input('Please Choose a Category Number:\n> '))
 				if userselect in userdict.keys():
-					expense_selection += userdict.get(userselect)
+					income_selection += userdict.get(userselect)
 				elif userselect not in userdict.keys():
 					print('Invalid User Selected, Please Try Again')
 					continue

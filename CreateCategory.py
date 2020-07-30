@@ -2,7 +2,7 @@ import sqlite3
 
 
 class CreateCategory:
-	### Function to Insert Date in to the Database ###
+	### Function to Insert Categories in to the Database ###
 	def ExpenseCategory(Name):
 		try:
 			sqliteConnection = sqlite3.connect('Expenses.db')

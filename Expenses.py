@@ -6,7 +6,7 @@ from Categories import *
 from CurrentUser import *
 from CreateUser import *
 from CategoryTotals import *
-from ExpIncTotals import *
+from TransactionTable import *
 from InsertToTable import *
 from ModifyRecord import *
 from DeleteRecord import *
@@ -19,7 +19,6 @@ cursor = sqliteConnection.cursor()
 
 ### List That is Printed out for the User Navigation ###
 navigation = ['1 - Enter a Transaction', '2 - Display Transactions', '3 - Modify a Transaction', '4 - Delete a Transaction', '5 - Options', '6 - Quit']
-
 
 print()
 print('|------------------------------------------------------------------------------------------------------------|')
@@ -82,17 +81,36 @@ while flag == False:
 		print()
 		start_date = DateValidation()
 		end_date = DateValidation()
-		ExpIncTotals(start_date, end_date, current_user)
-		cursor = sqliteConnection.cursor()
-		categories_query = 'SELECT * FROM ExpenseCategories'
-		cursor.execute(categories_query)
-		categories = cursor.fetchall()
-		cat = []
-		for i in categories:
-			cat.append(i)
+		TransactionTable(start_date, end_date, current_user)
 
-		for i in cat:
-			CategoryTotals(i[0], start_date, end_date, current_user)
+		sqliteConnection = sqlite3.connect('Expenses.db')
+		inc_cursor = sqliteConnection.cursor()
+		inc_categories_query = 'SELECT * FROM IncomeCategories'
+		inc_cursor.execute(inc_categories_query)
+		inc_categories = inc_cursor.fetchall()
+		inc_cat = []
+		for i in inc_categories:
+			inc_cat.append(i)
+		print('Income Category Totals:')
+		for i in inc_cat:
+			CategoryTotals.IncomeTotals(i[0], start_date, end_date, current_user)
+		CategoryTotals.IncomeTotalAmount(start_date, end_date, current_user)
+		cursor.close()
+
+		print()
+		sqliteConnection = sqlite3.connect('Expenses.db')
+		exp_cursor = sqliteConnection.cursor()
+		exp_categories_query = 'SELECT * FROM ExpenseCategories'
+		exp_cursor.execute(exp_categories_query)
+		exp_categories = exp_cursor.fetchall()
+		exp_cat = []
+		for i in exp_categories:
+			exp_cat.append(i)
+
+		print('Expense Category Totals:')
+		for i in exp_cat:
+			CategoryTotals.ExpenseTotals(i[0], start_date, end_date, current_user)
+		CategoryTotals.ExpenseTotalAmount(start_date, end_date, current_user)
 		cursor.close()
 
 	### Main Menu - Modify a Transaction

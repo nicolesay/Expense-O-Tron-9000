@@ -196,3 +196,22 @@ def DeleteRecord(id):
 				print()
 				print('Please Make a Valid Selection!')
 				cont = input('Press any Key to Continue.')
+
+
+### Removed from Transaction Totals
+	print('Expense & Income Totals:')
+	sqliteConnection = sqlite3.connect('Expenses.db')
+	cursor = sqliteConnection.cursor()
+	total_query = """SELECT sum(Amount) FROM Expenses WHERE cast(Amount as float) < 0 AND Date BETWEEN ? and ? and User = ?"""
+	cursor.execute(total_query, (date1, date2, user))
+	total = cursor.fetchmany()
+	for item in total:
+		print('Total Expenses Are: $' + '{:.2f}'.format(item[0] or 0))
+
+	cursor2 = sqliteConnection.cursor()
+	deposits_query = """SELECT sum(Amount) FROM Expenses WHERE cast(Amount as float) > 0 AND Date BETWEEN ? and ? and User = ?"""
+	cursor2.execute(deposits_query, (date1, date2, user))
+	deposits = cursor2.fetchmany()
+	for item in deposits:
+		print('Total Deposits Are: $' + '{:.2f}'.format(item[0] or 0))
+	print()
