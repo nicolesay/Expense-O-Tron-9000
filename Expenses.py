@@ -11,6 +11,7 @@ from InsertToTable import *
 from ModifyRecord import *
 from DeleteRecord import *
 from CreateCategory import *
+from RecordExport import *
 
 
 ### Initialize Main SQLite Connection ###
@@ -18,7 +19,7 @@ sqliteConnection = sqlite3.connect('Expenses.db')
 cursor = sqliteConnection.cursor()
 
 ### List That is Printed out for the User Navigation ###
-navigation = ['1 - Enter a Transaction', '2 - Display Transactions', '3 - Modify a Transaction', '4 - Delete a Transaction', '5 - Options', '6 - Quit']
+navigation = ['1 - Enter a Transaction', '2 - Display Transactions', '3 - Modify a Transaction', '4 - Delete a Transaction', '5 - Options', '6 - Export Transactions', '7 - Quit']
 
 print()
 print('|------------------------------------------------------------------------------------------------------------|')
@@ -183,7 +184,13 @@ while flag == False:
 				break
 		print('Current User is: ' + str(current_user))
 
+	elif ask == str('6'):
+		print()
+		start_date = DateValidation()
+		end_date = DateValidation()
+		RecordExport(start_date, end_date, current_user)
+
 	### Main Menu - Quit
-	elif ask == str('6') or 'goodbye':
+	elif ask == str('7') or 'goodbye':
 		print('Goodbye!')
 		flag = True
