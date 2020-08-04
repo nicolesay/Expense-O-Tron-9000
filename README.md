@@ -1,6 +1,6 @@
 # Expense-O-Tron-9000
 
-The Expense-O-Tron 9000 Accounting System is a state of the art accounting system, the pinnacle of accounting software, straight out of 1971! With it you can 
+The Expense-O-Tron 9000 Accounting System is a state of the art accounting system, the pinnacle of accounting software, straight out of 1956! With it you can 
 do such wonders as addition, subtraction, *and* multiplication! Will the wonders of modern computing ever cease?
 
 No more using a slide rule and abacus for you sport, sit back and let a gen-u-ine **computer program** do all of the heavy lifting for you!
