@@ -194,4 +194,3 @@ while flag == False:
 	elif ask == str('7') or 'goodbye':
 		print('Goodbye!')
 		flag = True
-test = 'test'
