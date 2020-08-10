@@ -42,7 +42,7 @@ while flag == False:
 		print(i)
 	ask = input('> ')
 
-	## Main Menu - Create Transaction 
+	## Main Menu - Create Transaction
 	if ask == str(1):
 		selectionnav1 = False
 		while selectionnav1 == False:
